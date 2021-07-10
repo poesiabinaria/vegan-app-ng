@@ -1,0 +1,35 @@
+.main-card {
+  color: white;
+  border-radius: var(--br-default);
+  position: relative;
+  z-index: 0;
+  background-image: url("../../assets/chicken-pig.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-weight: 500;
+
+  &:before {
+    content: "";
+    border-radius: 10px;
+    display: "block";
+    position: absolute;
+    background-color: black;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 23;
+    z-index: -1;
+    opacity: 0.65;
+  }
+
+  .pctg-number {
+    display: inline-block;
+    padding: 2px 0;
+    margin: 7px 0 5px 0;
+    color: var(--color-primary);
+    background-color: var(--color-yellow);
+    box-shadow: 0 0 0 1px var(--color-primary), 0 0 0 2px var(--color-yellow);
+  }
+}

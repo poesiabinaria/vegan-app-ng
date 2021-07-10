@@ -1,0 +1,78 @@
+<div class="item-nutrient-card bg-white p-3">
+  <div class="circle" [style]="{ backgroundColor: hexColor }"></div>
+  <header class="item-nutrient-card__header">
+    <div class="pctg-area">
+      <h4
+        class="pctg-number"
+        [style]="{
+          backgroundColor: hexColor,
+          boxShadow: '0 0 0 1px white, 0 0 0 2px' + hexColor
+        }"
+      >
+        {{ totalPctg }}%
+      </h4>
+      <div class="pctg-bar-area">
+        <div
+          class="pctg-bar"
+          [style]="{ backgroundColor: hexColor, width: totalPctg + '%' }"
+        ></div>
+      </div>
+    </div>
+    <h4>{{ cardTitle }}</h4>
+  </header>
+
+  <div class="item-nutrient-card__body mt-3">
+    <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig"
+    >
+      <div
+        ngxSlickItem
+        *ngFor="let nutrientName of objectKeys(userDataNutrient)"
+        class="slide"
+      >
+        <div>
+          <div>{{ userDataNutrient[nutrientName] | nutrientPctg }}%</div>
+          <div>{{ nutrientName }}</div>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+
+    <!-- <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig"
+    >
+      <div
+        ngxSlickItem
+        *ngFor="let nutrient of userDataNutrient | keyvalue"
+        class="slide"
+      >
+        <div>
+          <div>{{ nutrient.value | nutrientPctg }}%</div>
+          <div>{{ nutrient.key }}</div>
+        </div>
+      </div>
+    </ngx-slick-carousel> -->
+  </div>
+
+  <!-- <ngb-carousel
+    *ngIf="images"
+    [showNavigationArrows]="showNavigationArrows"
+    [showNavigationIndicators]="showNavigationIndicators"
+  >
+    <ng-template ngbSlide *ngFor="let nutrient of userDataNutrient | keyvalue">
+      <div>
+        <div>{{ nutrient.value | nutrientPctg }}%</div>
+        <div>{{ nutrient.key }}</div>
+      </div>
+    </ng-template>
+  </ngb-carousel> -->
+
+  <footer class="item-nutrient-card__footer">
+    <!-- <div class="material-icon-area">
+      <span class="material-icons md-18">more_horiz</span>
+    </div> -->
+  </footer>
+</div>

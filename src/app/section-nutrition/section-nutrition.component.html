@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 className="mt-4">Cálculo Nutricional</h2>
+
+  <section id="section-pctg-cards" class="area-pctg-cards">
+    <div class="item-pctg-card">
+      <app-main-card
+        [totalPctgMinerals]="totalPctgMinerals"
+        [totalPctgProteins]="totalPctgProteins"
+      >
+      </app-main-card>
+    </div>
+    <div class="item-pctg-card">
+      <app-nutrient-card
+        cardTitle="Proteínas"
+        hexColor="#f65c43"
+        [userDataNutrient]="userData.values.proteins"
+        (totalPctgItem)="setTotalPctgProteins($event)"
+      ></app-nutrient-card>
+    </div>
+    <div class="item-pctg-card">
+      <app-nutrient-card
+        cardTitle="Minerais"
+        hexColor="#58b1d6"
+        [userDataNutrient]="userData.values.minerals"
+        (totalPctgItem)="setTotalPctgMinerals($event)"
+      ></app-nutrient-card>
+    </div>
+  </section>
+
+  <section id="user-food">
+    <h3>Meus Alimentos</h3>
+    <p>
+      *ajuste a quantidade dos alimentos abaixo até alcançar 100% da
+      recomendação diária!
+    </p>
+
+    <app-user-foods [userData]="userData"></app-user-foods>
+  </section>
+</div>

@@ -1,0 +1,70 @@
+body {
+  //background-color: variables.$background-grey;
+}
+
+.bg-white {
+  background-color: white;
+  border: 1px solid var(--border-grey);
+  border-radius: 10px;
+}
+
+.font-weight-semibold {
+  font-weight: 500;
+}
+
+.text-medium {
+  font-size: 0.85rem;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+h3 {
+  text-transform: lowercase;
+}
+h4 {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+/* .food-item {
+    background-color: #e8f8ff;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border-radius: 15px;
+  } */
+
+.rotulo {
+}
+
+.area-cards {
+  display: flex;
+  .item-card {
+    margin-right: 10px;
+  }
+}
+
+/* .testea {
+    transition: all 10s ease;
+  }
+  
+  .testea:nth-of-type(1n + 3) {
+    display: none;
+    transition: all 10s ease;
+  } */
+
+// Material icons
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icon-area {
+  line-height: 0;
+  margin-top: 10px;
+  .material-icons {
+    line-height: 0;
+  }
+}

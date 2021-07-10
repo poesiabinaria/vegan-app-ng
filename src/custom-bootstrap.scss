@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Custom Bootstrap
+$theme-colors: (
+  //"primary": $color-primary,
+  "light": #ebf1f4,
+  "white": white
+);
+
+$body-bg: var(--background-grey);
+$body-color: var(--color-primary);
+
+$h2-font-size: 1rem;
+$h3-font-size: 1rem;
+$h4-font-size: 1rem;
+
+//$nav-link-padding-y: 1rem;
+$navbar-nav-link-padding-x: 1.2rem;
+
+$font-family-sans-serif: "Quicksand", sans-serif;
+
+@import "~bootstrap/scss/bootstrap";

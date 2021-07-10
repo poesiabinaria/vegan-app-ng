@@ -1,0 +1,25 @@
+.item-nutrient-card {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: 200px;
+  border: 1px solid var(--border-grey);
+  border-radius: var(--br-default);
+
+  .circle {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+    opacity: 0.2;
+    top: -50px;
+    left: -50px;
+    z-index: -1;
+  }
+  header {
+    display: flex;
+    align-items: baseline;
+  }
+}
