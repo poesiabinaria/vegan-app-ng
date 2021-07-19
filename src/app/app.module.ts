@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -24,6 +24,10 @@ import { MainCardComponent } from './main-card/main-card.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './header/header.component';
+import { FoodSelectionComponent } from './pages/food-selection/food-selection.component';
+import { FoodAdjustComponent } from './pages/food-adjust/food-adjust.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserProfileModule } from './pages/user-profile/user-profile.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,8 @@ import { HeaderComponent } from './header/header.component';
     NutrientPctgPipe,
     MainCardComponent,
     HeaderComponent,
+    FoodSelectionComponent,
+    FoodAdjustComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,7 @@ import { HeaderComponent } from './header/header.component';
     NgbModule,
     SlickCarouselModule,
     CarouselModule,
+    UserProfileModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

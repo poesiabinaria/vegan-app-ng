@@ -1,0 +1,103 @@
+<div class="container">
+  {{ userProfileForm.value | json }}
+  Form Status: {{ userProfileForm.status }}
+  {{ userProfileForm.controls.name.touched }}
+
+  <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">Nome</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+          [ngClass]="applyCssErrorClass('name')"
+        />
+        <div class="invalid-feedback">Please provide a valid city.</div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="gender">Sexo biológico</label>
+        <select
+          id="gender"
+          formControlName="gender"
+          class="custom-select form-control"
+        >
+          <option value="F">Feminino</option>
+          <option value="M">Masculino</option>
+        </select>
+      </div>
+      <div class="form-group col-md-1">
+        <label for="age">Idade</label>
+        <input
+          type="number"
+          class="form-control"
+          id="age"
+          formControlName="age"
+        />
+      </div>
+      <div class="form-group col-md-1">
+        <label for="weight">Peso</label>
+        <input
+          type="number"
+          class="form-control"
+          id="weight"
+          formControlName="weight"
+        />
+      </div>
+      <div class="form-group col-md-1">
+        <label for="height">Altura</label>
+        <input
+          type="number"
+          class="form-control"
+          id="height"
+          formControlName="height"
+        />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="dietType">Minha dieta é</label>
+        <select
+          id="dietType"
+          class="custom-select form-control"
+          formControlName="dietType"
+        >
+          <option value="ovolacto">Ovolactovegetariana</option>
+          <option value="ovo">Ovovegetariana</option>
+          <option value="lacto">Lactovegetariana</option>
+          <option value="strict">Vegetariana estrita</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="neutralLanguageCheck"
+          formControlName="neutralLanguageCheck"
+        />
+        <label class="form-check-label" for="neutralLanguageCheck">
+          Usar linguagem neutra pois sou viadx
+        </label>
+        <small id="neutralLanguageHelp" class="form-text text-muted">
+          Se selecionado, a linguagem neutra (ex: "bem-vindx") será utilizada
+          quando não for possível utilizar a linguagem inclusiva (isto é, aquela
+          que representa o coletivo, como "pessoas veganas")
+        </small>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+</div>

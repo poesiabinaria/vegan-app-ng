@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { FoodItem } from '../food-item';
-import { UserData } from '../user-data';
 import { FOODS } from '../mock-foods';
 
 @Component({
@@ -18,7 +16,7 @@ export class UserFoodsComponent implements OnInit {
     return this.foodsDB.find((x) => x.id === id);
   }
 
-  convertValuesBasedOnMeasure(foodValues: any, measure: any): any {
+  getFoodValuesBasedOnMeasure(foodValues: any, measure: any): any {
     let measureNumber: number, base: number;
     switch (measure) {
       case 'cs':
@@ -69,7 +67,7 @@ export class UserFoodsComponent implements OnInit {
   }
 
   updateAchievedNeed(foodValues: any, measure: string, multiplier: number) {
-    foodValues = this.convertValuesBasedOnMeasure(foodValues, measure);
+    foodValues = this.getFoodValuesBasedOnMeasure(foodValues, measure);
 
     const updatedValues: any = {};
     const nutrientGroupNames = Object.keys(this.userData.values);

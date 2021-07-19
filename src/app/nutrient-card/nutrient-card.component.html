@@ -32,8 +32,10 @@
         *ngFor="let nutrientName of objectKeys(userDataNutrient)"
         class="slide"
       >
-        <div>
-          <div>{{ userDataNutrient[nutrientName] | nutrientPctg }}%</div>
+        <div class="item-nutrient">
+          <div class="bold">
+            {{ userDataNutrient[nutrientName] | nutrientPctg }}%
+          </div>
           <div>{{ nutrientName }}</div>
         </div>
       </div>
@@ -72,7 +74,7 @@
 
   <footer class="item-nutrient-card__footer">
     <!-- <div class="material-icon-area">
-      <span class="material-icons md-18">more_horiz</span>
+      <span class="material-icons sm-18">more_horiz</span>
     </div> -->
   </footer>
 </div>

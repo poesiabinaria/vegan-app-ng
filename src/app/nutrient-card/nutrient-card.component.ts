@@ -7,10 +7,6 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-import { UserData } from '../user-data';
-import { FOODS } from '../mock-foods';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-nutrient-card',

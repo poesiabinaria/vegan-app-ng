@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
-import { FoodItem } from '../food-item';
-import { UserData } from '../user-data';
 import { FOODS } from '../mock-foods';
+import { USERDATA } from '../user-profile';
 
 @Component({
   selector: 'app-section-nutrition',
@@ -11,6 +10,7 @@ import { FOODS } from '../mock-foods';
 })
 export class SectionNutritionComponent implements OnInit {
   foodsDB = FOODS;
+  userData = USERDATA;
 
   totalPctgProteins = 0;
   totalPctgMinerals = 0;
@@ -21,25 +21,6 @@ export class SectionNutritionComponent implements OnInit {
   setTotalPctgMinerals(value: number) {
     this.totalPctgMinerals = value;
   }
-
-  userData: UserData = {
-    profile: {
-      name: 'Vanessafada',
-      age: 26,
-      gender: 'F',
-      weight: 90, //kg,
-      height: 1.5,
-    },
-
-    foods: [
-      { id: 12, qty: 0, measure: 'g' },
-      { id: 13, qty: 0, measure: 'g' },
-      { id: 14, qty: 0, measure: 'g' },
-      { id: 15, qty: 0, measure: 'g' },
-    ],
-
-    values: {},
-  };
 
   calculateNeeds(weight: number, gender: string) {
     const isWoman: boolean = gender == 'F' ? true : false;

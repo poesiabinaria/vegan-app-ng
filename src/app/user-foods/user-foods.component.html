@@ -23,11 +23,10 @@
             </div>
           </div>
         </div>
-        <div class="right-area">
-          <div class="d-flex">
-            <div>
-              {{ itemFoodUser.qty }}
-              {{ itemFoodUser.measure }}
+        <div class="right-area text-right">
+          <div class="d-flex align-items-center">
+            <div class="food-qty mr-2">
+              {{ itemFoodUser.qty * (itemFoodUser.measure == "g" ? 100 : 1) }}
             </div>
             <div>
               <select
@@ -35,17 +34,30 @@
                 class="custom-select custom-select-sm"
               >
                 <option value="g" selected>gramas</option>
-                <option value="cs">colher sopa</option>
-                <option value="ch">concha</option>
+                <option value="cs">colh. sopa</option>
+                <option value="ch">concha(s)</option>
               </select>
             </div>
           </div>
 
-          <div class="buttons-area">
-            <button (click)="updateQty(itemFoodBase, itemFoodUser, 'remove')">
+          <div
+            class="btn-group btn-group-lg mt-3"
+            role="group"
+            aria-label="Basic example"
+          >
+            <button
+              type="button"
+              class="btn qty-button"
+              (click)="updateQty(itemFoodBase, itemFoodUser, 'remove')"
+              [disabled]="itemFoodUser.qty <= 0 ? true : false"
+            >
               -
             </button>
-            <button (click)="updateQty(itemFoodBase, itemFoodUser, 'add')">
+            <button
+              type="button"
+              class="btn qty-button"
+              (click)="updateQty(itemFoodBase, itemFoodUser, 'add')"
+            >
               +
             </button>
           </div>

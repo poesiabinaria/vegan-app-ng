@@ -1,0 +1,23 @@
+<p>food-selection works!</p>
+<div class="container">
+  <h2 className="mt-4">Eu gosto de comer...</h2>
+  <p>
+    selecione abaixo os alimentos que você mais gosta de consumir.<br />
+    você poderá editar depois!
+  </p>
+
+  <div>
+    <div *ngFor="let itemFoodDB of foodsDB">
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="{{ itemFoodDB.id }}"
+        />
+        <label class="custom-control-label" for="{{ itemFoodDB.id }}">{{
+          itemFoodDB.name
+        }}</label>
+      </div>
+    </div>
+  </div>
+</div>

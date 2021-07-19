@@ -22,4 +22,11 @@
     display: flex;
     align-items: baseline;
   }
+
+  .item-nutrient-card__body {
+    .item-nutrient {
+      font-size: 1rem;
+      color: var(--color-secondary);
+    }
+  }
 }
