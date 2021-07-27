@@ -28,6 +28,7 @@ import { FoodSelectionComponent } from './pages/food-selection/food-selection.co
 import { FoodAdjustComponent } from './pages/food-adjust/food-adjust.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { UserProfileModule } from './pages/user-profile/user-profile.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { UserProfileModule } from './pages/user-profile/user-profile.module';
     SlickCarouselModule,
     CarouselModule,
     UserProfileModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

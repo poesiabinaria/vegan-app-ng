@@ -23,8 +23,8 @@ export const USERDATA: UserData = {
 
   foods: [
     { id: 12, qty: 0, measure: 'g' },
-    { id: 13, qty: 0, measure: 'g' },
-    { id: 14, qty: 0, measure: 'g' },
+    //{ id: 13, qty: 0, measure: 'g' },
+    //{ id: 14, qty: 0, measure: 'g' },
     { id: 15, qty: 0, measure: 'g' },
   ],
 

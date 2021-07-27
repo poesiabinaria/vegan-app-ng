@@ -1,13 +1,101 @@
-<p>food-selection works!</p>
 <div class="container">
-  <h2 className="mt-4">Eu gosto de comer...</h2>
-  <p>
-    selecione abaixo os alimentos que você mais gosta de consumir.<br />
-    você poderá editar depois!
-  </p>
+  <section id="section-search-area">
+    <h2 className="mt-4">Eu gosto de comer...</h2>
+    <p>
+      selecione abaixo os alimentos que você mais gosta de consumir.<br />
+      você poderá editar depois!
+    </p>
 
-  <div>
-    <div *ngFor="let itemFoodDB of foodsDB">
+    <form autocomplete="off">
+      <div class="form-group">
+        <label for="search">Buscar</label>
+        <input
+          type="text"
+          class="form-control"
+          id="search"
+          [formControl]="searchInput"
+          (focus)="showSearchResults = true"
+          (focusout)="showSearchResults = true"
+        />
+
+        <div [ngClass]="showSearchResults ? '' : 'd-none'">
+          <div class="list-group" *ngFor="let food of searchResult$ | async">
+            <a
+              href="#"
+              class="list-group-item list-group-item-action"
+              (click)="addFood(food); $event.preventDefault()"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">{{ food.name }}</h3>
+                <small>{{ food.id }}</small>
+              </div>
+              <small class="mb-1">{{ food.category }}</small>
+              <div>
+                <small class="text-muted">{{ food | json }}</small>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section id="section-user-foods-area">
+    <h2 className="mt-4">Meus alimentos</h2>
+    <div class="items-food">
+      <div class="row no-gutters">
+        <div class="col-xl-3" *ngFor="let userFood of userFoods">
+          <div class="item-food d-flex align-items-center bg-white p-3">
+            <div class="left-area flex-grow-1">
+              <div class="d-flex align-items-center">
+                <div class="img-area">
+                  <img src="../../assets/place.png" alt="" />
+                </div>
+
+                <div class="description-area">
+                  <h4>{{ userFood.name }}</h4>
+                  <div class="small">{{ userFood.category }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="right-area text-right small">
+              <button
+                (click)="deleteFood(userFood.id)"
+                type="button"
+                class="btn btn-danger btn-sm"
+              >
+                x
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #savingTemplate> Salvando... </ng-template>
+    <div class="button-area text-right mt-4">
+      <a routerLink="/ajustar-alimentos" type="button" class="btn btn-primary"
+        >Próximo</a
+      >
+    </div>
+  </section>
+
+  <!-- <div class="items-food">
+    <div class="item-food" *ngFor="let result of userFoodsResult$ | async">
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h3 class="mb-1">{{ result.name }}</h3>
+          <small>{{ result.id }}</small>
+        </div>
+        <small class="mb-1">{{ result.category }}</small>
+        <div>
+          <small class="text-muted">{{ result | json }}</small>
+        </div>
+      </a>
+    </div>
+  </div> -->
+
+  <!-- <div *ngIf="foodsDB$ | async as foods; else savingTemplate">
+    <div *ngFor="let itemFoodDB of foods">
       <div class="custom-control custom-checkbox">
         <input
           type="checkbox"
@@ -20,4 +108,6 @@
       </div>
     </div>
   </div>
+
+  <ng-template #savingTemplate> Carregando... </ng-template> -->
 </div>
