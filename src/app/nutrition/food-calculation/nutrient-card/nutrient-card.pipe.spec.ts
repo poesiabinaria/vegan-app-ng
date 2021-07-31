@@ -1,4 +1,4 @@
-import { NutrientPctgPipe } from './nutrient-pctg.pipe';
+import { NutrientPctgPipe } from './nutrient-card.pipe';
 
 describe('NutrientPctgPipe', () => {
   it('create an instance', () => {

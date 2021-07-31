@@ -23,7 +23,7 @@
             <a
               href="#"
               class="list-group-item list-group-item-action"
-              (click)="addFood(food); $event.preventDefault()"
+              (click)="add(food); $event.preventDefault()"
             >
               <div class="d-flex w-100 justify-content-between">
                 <h3 class="mb-1">{{ food.name }}</h3>
@@ -42,41 +42,46 @@
 
   <section id="section-user-foods-area">
     <h2 className="mt-4">Meus alimentos</h2>
-    <div class="items-food">
-      <div class="row no-gutters">
-        <div class="col-xl-3" *ngFor="let userFood of userFoods">
-          <div class="item-food d-flex align-items-center bg-white p-3">
-            <div class="left-area flex-grow-1">
-              <div class="d-flex align-items-center">
-                <div class="img-area">
-                  <img src="../../assets/place.png" alt="" />
-                </div>
 
-                <div class="description-area">
-                  <h4>{{ userFood.name }}</h4>
-                  <div class="small">{{ userFood.category }}</div>
+    <div class="foods-area" *ngIf="userFoods.length > 0; else loadingTemplate">
+      <div class="items-food">
+        <div class="row no-gutters">
+          <div class="col-xl-3" *ngFor="let userFood of userFoods">
+            <div class="item-food d-flex align-items-center bg-white p-3">
+              <div class="left-area flex-grow-1">
+                <div class="d-flex align-items-center">
+                  <div class="img-area">
+                    <img src="../../assets/img/place.png" alt="" />
+                  </div>
+
+                  <div class="description-area">
+                    <h4>{{ userFood.name }}</h4>
+                    <div class="small">{{ userFood.category }}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="right-area text-right small">
-              <button
-                (click)="deleteFood(userFood.id)"
-                type="button"
-                class="btn btn-danger btn-sm"
-              >
-                x
-              </button>
+              <div class="right-area text-right small">
+                <button
+                  (click)="delete(userFood.id)"
+                  type="button"
+                  class="btn btn-danger btn-sm"
+                >
+                  x
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="button-area mt-4">
+        <a routerLink="/ajustar-alimentos" type="button" class="btn btn-primary"
+          >Próximo</a
+        >
+      </div>
     </div>
-    <ng-template #savingTemplate> Salvando... </ng-template>
-    <div class="button-area text-right mt-4">
-      <a routerLink="/ajustar-alimentos" type="button" class="btn btn-primary"
-        >Próximo</a
-      >
-    </div>
+
+    <ng-template #loadingTemplate> Carregando... </ng-template>
   </section>
 
   <!-- <div class="items-food">
@@ -94,7 +99,7 @@
     </div>
   </div> -->
 
-  <!-- <div *ngIf="foodsDB$ | async as foods; else savingTemplate">
+  <!-- <div *ngIf="foodsDB$ | async as foods; else loadingTemplate">
     <div *ngFor="let itemFoodDB of foods">
       <div class="custom-control custom-checkbox">
         <input
@@ -109,5 +114,5 @@
     </div>
   </div>
 
-  <ng-template #savingTemplate> Carregando... </ng-template> -->
+   -->
 </div>

@@ -1,39 +1,10 @@
-interface FoodItem {
-  id: number;
-  name: string;
-  defaultMeasure: string;
-  values: {
-    calories: number;
+import { Food } from './nutrition/shared/nutrition.model';
 
-    vA: number;
-    iron: number;
-    calcium: number;
-    zinc: number;
-
-    carbohydrates: number;
-
-    mono: number;
-    o3: number;
-    o6: number;
-    trans: number;
-
-    proteins: number;
-    fenilalanina: number;
-    histidina: number;
-    isoleucina: number;
-    leucina: number;
-    lisina: number;
-    metionina: number;
-    treonina: number;
-    triptofano: number;
-    valina: number;
-  };
-}
-
-export const FOODS: FoodItem[] = [
+export const FOODS: Food[] = [
   {
     id: 12,
     name: 'Feijão',
+    category: '',
     defaultMeasure: 'g',
     values: {
       calories: 123,
@@ -66,6 +37,7 @@ export const FOODS: FoodItem[] = [
   {
     id: 13,
     name: 'Grão de bico',
+    category: '',
     defaultMeasure: 'g',
     values: {
       calories: 164,
@@ -98,6 +70,7 @@ export const FOODS: FoodItem[] = [
   {
     id: 14,
     name: 'Arroz',
+    category: '',
     defaultMeasure: 'g',
     values: {
       calories: 130,
@@ -130,6 +103,7 @@ export const FOODS: FoodItem[] = [
   {
     id: 15,
     name: 'Aveia',
+    category: '',
     defaultMeasure: 'cs',
     values: {
       calories: 389,

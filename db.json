@@ -5,7 +5,6 @@
       "name": "Feijão branco",
       "category": "Leguminosas",
       "defaultMeasure": "g",
-
       "values": {
         "calories": 123,
         "vA": 0,
@@ -29,7 +28,6 @@
         "valina": 464
       }
     },
-
     {
       "id": 13,
       "name": "Feijão preto",
@@ -37,19 +35,15 @@
       "defaultMeasure": "g",
       "values": {
         "calories": 164,
-
         "vA": 12,
         "iron": 2.9,
         "calcium": 49,
         "zinc": 1.5,
-
         "carbohydrates": 12,
-
         "mono": 12,
         "o3": 12,
         "o6": 12,
         "trans": 12,
-
         "proteins": 8.9,
         "fenilalanina": 295,
         "histidina": 244,
@@ -62,7 +56,6 @@
         "valina": 372
       }
     },
-
     {
       "id": 14,
       "name": "Arroz",
@@ -70,19 +63,15 @@
       "defaultMeasure": "g",
       "values": {
         "calories": 130,
-
         "vA": 12,
         "iron": 1.2,
         "calcium": 10,
         "zinc": 0.5,
-
         "carbohydrates": 12,
-
         "mono": 12,
         "o3": 12,
         "o6": 12,
         "trans": 12,
-
         "proteins": 2.7,
         "fenilalanina": 234,
         "histidina": 63,
@@ -95,7 +84,6 @@
         "valina": 164
       }
     },
-
     {
       "id": 15,
       "name": "Aveia",
@@ -103,19 +91,15 @@
       "defaultMeasure": "cs",
       "values": {
         "calories": 389,
-
         "vA": 12,
         "iron": 4.7,
         "calcium": 54,
         "zinc": 4,
-
         "carbohydrates": 12,
-
         "mono": 12,
         "o3": 12,
         "o6": 12,
         "trans": 12,
-
         "proteins": 16.9,
         "fenilalanina": 1468,
         "histidina": 405,
@@ -127,6 +111,33 @@
         "triptofano": 234,
         "valina": 937
       }
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "profile": {
+        "name": "Vanessafada",
+        "age": 26,
+        "gender": "F",
+        "weight": 90,
+        "height": 1.5
+      },
+      "values": {}
+    }
+  ],
+  "usersFoods": [
+    {
+      "id": 12,
+      "qty": 0,
+      "measure": "g",
+      "userId": 1
+    },
+    {
+      "id": 15,
+      "qty": 0,
+      "measure": "g",
+      "userId": 1
     }
   ]
 }

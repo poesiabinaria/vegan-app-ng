@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
-import { FOODS } from '../mock-foods';
-import { USERDATA } from '../user-profile';
+import { FOODS } from '../../mock-foods';
+import { USERDATA } from '../../mock-user-profile';
 
 @Component({
-  selector: 'app-section-nutrition',
-  templateUrl: './section-nutrition.component.html',
-  styleUrls: ['./section-nutrition.component.scss'],
+  selector: 'app-food-calculation',
+  templateUrl: './food-calculation.component.html',
+  styleUrls: ['./food-calculation.component.scss'],
 })
-export class SectionNutritionComponent implements OnInit {
+export class FoodCalculationComponent implements OnInit {
   foodsDB = FOODS;
   userData = USERDATA;
 

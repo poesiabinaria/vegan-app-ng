@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { USERDATA } from '../../user-profile';
+import { USERDATA } from '../../mock-user-profile';
 
 @Component({
   selector: 'app-user-profile',

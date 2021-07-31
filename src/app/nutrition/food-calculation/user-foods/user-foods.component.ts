@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { FOODS } from '../mock-foods';
+import { FOODS } from '../../../mock-foods';
 
 @Component({
   selector: 'app-user-foods',

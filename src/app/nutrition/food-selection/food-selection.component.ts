@@ -10,10 +10,10 @@ import {
   switchMap,
   tap,
 } from 'rxjs/operators';
-import { FoodItem } from 'src/app/foods-interface';
-import { USERDATA } from 'src/app/user-profile';
+import { Food } from 'src/app/nutrition/shared/nutrition.model';
+import { USERDATA } from 'src/app/mock-user-profile';
 import { environment } from 'src/environments/environment';
-import { FoodSelectionService } from './food-selection.service';
+import { NutritionService } from '../shared/nutrition.service';
 
 @Component({
   selector: 'app-food-selection',
@@ -23,45 +23,41 @@ import { FoodSelectionService } from './food-selection.service';
 export class FoodSelectionComponent implements OnInit {
   userData = USERDATA;
 
-  searchResult$!: Observable<FoodItem[]>;
-  //userFoodsResult$!: Observable<FoodItem[]>;
+  searchResult$!: Observable<Food[]>;
+  //userFoodsResult$!: Observable<Food[]>;
 
   userFoodsIds: number[] = [];
-  userFoods: FoodItem[] = [];
+  userFoods: any[] = [];
 
   showSearchResults: boolean = false;
 
   searchInput = new FormControl(null);
 
-  constructor(private service: FoodSelectionService) {}
+  constructor(private service: NutritionService) {}
 
-  getFoodsUser() {
-    this.userFoodsIds = this.userData.foods.map(
-      (userFood: FoodItem) => userFood.id
-    );
-    this.service
-      .getFoodById(this.userFoodsIds)
-      .subscribe((foodResults) =>
-        foodResults.map((food) => this.userFoods.push(food))
-      );
-  }
-
-  addFood(food: FoodItem) {
+  add(food: Food) {
     if (!this.userFoods.find((x) => x.id == food.id)) {
-      this.userFoods.push(food);
-      this.userData.foods.push({ id: food.id, qty: 0, measure: 'g' });
+      this.service
+        .addFood({ id: food.id, qty: 0, measure: 'g' }, 1)
+        .subscribe(() => {
+          this.userFoods.push(food);
+          console.log(this.userFoods);
+        });
     } else {
       alert('Alimento já adicionado');
     }
   }
 
-  deleteFood(id: number) {
-    this.userFoods = this.userFoods.filter((x) => x.id !== id);
-    this.userData.foods = this.userData.foods.filter((x: any) => x.id !== id);
+  delete(foodId: number) {
+    this.service.deleteFood(foodId).subscribe(() => {
+      this.userFoods = this.userFoods.filter((x) => x.id !== foodId);
+    });
   }
 
   ngOnInit(): void {
-    this.getFoodsUser();
+    this.service
+      .getFoodsByUserId(1)
+      .subscribe((foods: Food[]) => (this.userFoods = foods));
 
     this.searchResult$ = this.searchInput.valueChanges.pipe(
       map((value) => value.trim()),

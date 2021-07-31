@@ -1,16 +1,4 @@
-interface UserData {
-  profile: {
-    name: string;
-    age: number;
-    gender: string;
-    weight: number; //kg,
-    height: number;
-  };
-
-  foods: any;
-
-  values: any;
-}
+import { UserData } from './core/user-profile/user-profile.model';
 
 export const USERDATA: UserData = {
   profile: {

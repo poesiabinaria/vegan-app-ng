@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SectionNutritionComponent } from './section-nutrition/section-nutrition.component';
-import { FoodSelectionComponent } from './pages/food-selection/food-selection.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { FoodCalculationComponent } from './nutrition/food-calculation/food-calculation.component';
+import { FoodSelectionComponent } from './nutrition/food-selection/food-selection.component';
+import { UserProfileComponent } from './core/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ajustar-alimentos', pathMatch: 'full' },
-  { path: 'ajustar-alimentos', component: SectionNutritionComponent },
+  { path: 'ajustar-alimentos', component: FoodCalculationComponent },
   { path: 'selecionar-alimentos', component: FoodSelectionComponent },
   { path: 'meu-perfil', component: UserProfileComponent },
 ];
