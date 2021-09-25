@@ -1,0 +1,36 @@
+<div class="container">
+  {{ signUpForm.value | json }}
+  Form Status: {{ signUpForm.status }}
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+    <div class="form-group">
+      <label for="passwordConfirmation">Digite a senha novamente</label>
+      <input
+        type="password"
+        class="form-control"
+        id="passwordConfirmation"
+        formControlName="passwordConfirmation"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Próximo</button>
+  </form>
+</div>

@@ -3,7 +3,7 @@
   <header class="item-nutrient-card__header">
     <div class="pctg-area">
       <h4
-        class="pctg-number"
+        class="card-title pctg-number"
         [style]="{
           backgroundColor: hexColor,
           boxShadow: '0 0 0 1px white, 0 0 0 2px' + hexColor
@@ -18,7 +18,7 @@
         ></div>
       </div>
     </div>
-    <h4>{{ cardTitle }}</h4>
+    <h4 class="card-title">{{ cardTitle }}</h4>
   </header>
 
   <div class="item-nutrient-card__body mt-3">
@@ -36,7 +36,7 @@
           <div class="bold">
             {{ userDataNutrient[nutrientName] | nutrientPctg }}%
           </div>
-          <div>{{ nutrientName }}</div>
+          <div class="nutrient-name">{{ nutrientName }}</div>
         </div>
       </div>
     </ngx-slick-carousel>

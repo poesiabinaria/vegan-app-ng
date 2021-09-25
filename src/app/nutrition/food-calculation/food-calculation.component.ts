@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { tap } from 'rxjs/operators';
 
 import { FOODS } from '../../mock-foods';
 import { USERDATA } from '../../mock-user-profile';
+import { NutritionService } from '../shared/nutrition.service';
 
 @Component({
   selector: 'app-food-calculation',
@@ -43,7 +45,7 @@ export class FoodCalculationComponent implements OnInit {
         trans: [0, 0],
       },
       proteins: {
-        //proteins: [0.8 * weight, 0],
+        proteins: [1.6 * weight, 0],
         fenilalanina: [33 * weight, 0],
         histidina: [14 * weight, 0],
         isoleucina: [19 * weight, 0],
@@ -71,13 +73,20 @@ export class FoodCalculationComponent implements OnInit {
       // proteins: [0.8 * weight, 0],
     };
 
+    //this.service.updateUserValues(values, 1).subscribe();
+
     this.userData.values = values;
   }
 
-  constructor() {}
+  constructor(private service: NutritionService) {}
 
   ngOnInit(): void {
-    this.calculateNeeds(27, 'F');
-    console.log(this.userData);
+    this.calculateNeeds(59, 'M');
+
+    // this.service
+    //   .getUserValues(1)
+    //   .pipe(tap((x) => console.log('sd', x)))
+    //   .subscribe();
+    // console.log(this.userData);
   }
 }

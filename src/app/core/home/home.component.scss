@@ -1,0 +1,34 @@
+// .main {
+//   background-color: #223443;
+// }
+
+.greetings {
+  margin-top: 150px;
+}
+
+.item-block {
+  //   background: linear-gradient(
+  //     200deg,
+  //     rgba(61, 186, 114, 1) 40%,
+  //     rgba(245, 196, 31, 1) 100%
+  //   );
+
+  //color: white;
+  border-radius: 20px;
+  border: 1px solid var(--border-grey);
+  background-color: white;
+
+  .header-area {
+    h3 .first-line {
+      text-transform: lowercase;
+      font-size: 1rem;
+    }
+  }
+
+  .body-area {
+    p {
+      text-align: justify;
+      //font-weight: 500;
+    }
+  }
+}

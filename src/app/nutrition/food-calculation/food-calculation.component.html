@@ -1,39 +1,56 @@
-<div class="container">
-  <h2 className="mt-4">Cálculo Nutricional</h2>
+<app-nutrition-section-header></app-nutrition-section-header>
 
-  <section id="section-pctg-cards" class="area-pctg-cards">
-    <div class="item-pctg-card">
-      <app-main-card
-        [totalPctgMinerals]="totalPctgMinerals"
-        [totalPctgProteins]="totalPctgProteins"
-      >
-      </app-main-card>
+<section id="section-pctg-cards">
+  <div class="container">
+    <div class="area-pctg-cards pb-4">
+      <div class="item-pctg-card">
+        <app-main-card
+          [totalPctgMinerals]="totalPctgMinerals"
+          [totalPctgProteins]="totalPctgProteins"
+        >
+        </app-main-card>
+      </div>
+      <div class="item-pctg-card">
+        <app-nutrient-card
+          cardTitle="Proteínas"
+          hexColor="#f65c43"
+          [userDataNutrient]="userData.values.proteins"
+          (totalPctgItem)="setTotalPctgProteins($event)"
+        ></app-nutrient-card>
+      </div>
+      <div class="item-pctg-card">
+        <app-nutrient-card
+          cardTitle="Minerais"
+          hexColor="#58b1d6"
+          [userDataNutrient]="userData.values.minerals"
+          (totalPctgItem)="setTotalPctgMinerals($event)"
+        ></app-nutrient-card>
+      </div>
     </div>
-    <div class="item-pctg-card">
-      <app-nutrient-card
-        cardTitle="Proteínas"
-        hexColor="#f65c43"
-        [userDataNutrient]="userData.values.proteins"
-        (totalPctgItem)="setTotalPctgProteins($event)"
-      ></app-nutrient-card>
-    </div>
-    <div class="item-pctg-card">
-      <app-nutrient-card
-        cardTitle="Minerais"
-        hexColor="#58b1d6"
-        [userDataNutrient]="userData.values.minerals"
-        (totalPctgItem)="setTotalPctgMinerals($event)"
-      ></app-nutrient-card>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="user-food">
-    <h3>Meus Alimentos</h3>
-    <p>
-      *ajuste a quantidade dos alimentos abaixo até alcançar 100% da
-      recomendação diária!
-    </p>
-
-    <app-user-foods [userData]="userData"></app-user-foods>
-  </section>
-</div>
+<section id="user-food">
+  <div class="container">
+    <div class="d-flex align-items-center mb-4">
+      <div class="left-area flex-grow-1">
+        <h3 class="section-title secondary-title">Meus Alimentos</h3>
+        <p class="mb-0">
+          *ajuste a quantidade dos alimentos abaixo até alcançar 100% da
+          recomendação diária!
+        </p>
+      </div>
+      <div class="right-area">
+        <a
+          routerLink="/selecionar-alimentos"
+          type="button"
+          class="btn btn-primary"
+          >Meus alimentos</a
+        >
+      </div>
+    </div>
+    <div class="items-food">
+      <app-user-foods [userData]="userData"></app-user-foods>
+    </div>
+  </div>
+</section>

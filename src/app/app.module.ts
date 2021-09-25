@@ -18,6 +18,10 @@ import { MainCardComponent } from './nutrition/food-calculation/main-card/main-c
 import { FoodSelectionComponent } from './nutrition/food-selection/food-selection.component';
 import { FoodCalculationComponent } from './nutrition/food-calculation/food-calculation.component';
 import { UserProfileModule } from './core/user-profile/user-profile.module';
+import { GetFoodDataByIdPipe } from './nutrition/food-calculation/user-foods/get-food-data-by-id.pipe';
+import { SignUpComponent } from './core/sign-up/sign-up.component';
+import { HomeComponent } from './core/home/home.component';
+import { NutritionSectionHeaderComponent } from './nutrition/shared/nutrition-section-header/nutrition-section-header.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { UserProfileModule } from './core/user-profile/user-profile.module';
     HeaderComponent,
     FoodSelectionComponent,
     FoodCalculationComponent,
+    GetFoodDataByIdPipe,
+    SignUpComponent,
+    HomeComponent,
+    NutritionSectionHeaderComponent,
   ],
   imports: [
     BrowserModule,

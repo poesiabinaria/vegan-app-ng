@@ -7,6 +7,7 @@
   --color-secondary: #595959;
 
   --color-yellow: #f7ca40;
+  --color-blue: #58b1d6;
 
   --br-default: 10px;
 }
@@ -84,5 +85,45 @@ section {
 
   .food-qty {
     font-weight: 500;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  //font-weight: 500;
+}
+
+// h2 {
+//   //text-transform: uppercase;
+//   font-weight: 600;
+// }
+
+// h3 {
+//   //text-transform: lowercase;
+//   font-weight: 600;
+// }
+// h4 {
+//   font-size: 1rem;
+//   font-weight: 500;
+// }
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+
+  &.primary-title {
+    text-transform: uppercase;
+  }
+  &.secondary-title {
+    text-transform: lowercase;
   }
 }

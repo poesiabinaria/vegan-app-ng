@@ -1,14 +1,16 @@
+<app-nutrition-section-header></app-nutrition-section-header>
+
 <div class="container">
   <section id="section-search-area">
-    <h2 className="mt-4">Eu gosto de comer...</h2>
-    <p>
-      selecione abaixo os alimentos que você mais gosta de consumir.<br />
-      você poderá editar depois!
+    <h2 class="section-title secondary-title mt-4">Eu gosto de comer...</h2>
+    <p class="small">
+      Selecione abaixo os alimentos que você mais gosta de consumir. Você poderá
+      editar depois!
     </p>
 
     <form autocomplete="off">
       <div class="form-group">
-        <label for="search">Buscar</label>
+        <!-- <label for="search">Buscar</label> -->
         <input
           type="text"
           class="form-control"
@@ -23,11 +25,11 @@
             <a
               href="#"
               class="list-group-item list-group-item-action"
-              (click)="add(food); $event.preventDefault()"
+              (click)="addFood(food); $event.preventDefault()"
             >
               <div class="d-flex w-100 justify-content-between">
-                <h3 class="mb-1">{{ food.name }}</h3>
-                <small>{{ food.id }}</small>
+                <h3 class="card-title mb-1">{{ food.name }}</h3>
+                <small>{{ food.food_id }}</small>
               </div>
               <small class="mb-1">{{ food.category }}</small>
               <div>
@@ -41,12 +43,15 @@
   </section>
 
   <section id="section-user-foods-area">
-    <h2 className="mt-4">Meus alimentos</h2>
+    <h2 class="section-title secondary-title mt-4">Meus alimentos</h2>
 
-    <div class="foods-area" *ngIf="userFoods.length > 0; else loadingTemplate">
+    <div
+      class="foods-area"
+      *ngIf="userFoodsData.length > 0; else loadingTemplate"
+    >
       <div class="items-food">
         <div class="row no-gutters">
-          <div class="col-xl-3" *ngFor="let userFood of userFoods">
+          <div class="col-xl-3" *ngFor="let userFood of userFoodsData">
             <div class="item-food d-flex align-items-center bg-white p-3">
               <div class="left-area flex-grow-1">
                 <div class="d-flex align-items-center">
@@ -55,14 +60,14 @@
                   </div>
 
                   <div class="description-area">
-                    <h4>{{ userFood.name }}</h4>
+                    <h4 class="card-title">{{ userFood.name }}</h4>
                     <div class="small">{{ userFood.category }}</div>
                   </div>
                 </div>
               </div>
               <div class="right-area text-right small">
                 <button
-                  (click)="delete(userFood.id)"
+                  (click)="deleteFood(userFood.food_id)"
                   type="button"
                   class="btn btn-danger btn-sm"
                 >
@@ -75,7 +80,7 @@
       </div>
 
       <div class="button-area mt-4">
-        <a routerLink="/ajustar-alimentos" type="button" class="btn btn-primary"
+        <a (click)="saveFoods()" type="button" class="btn btn-primary"
           >Próximo</a
         >
       </div>

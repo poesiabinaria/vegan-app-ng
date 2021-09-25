@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { from, Observable } from 'rxjs';
 import {
   debounceTime,
@@ -11,7 +12,6 @@ import {
   tap,
 } from 'rxjs/operators';
 import { Food } from 'src/app/nutrition/shared/nutrition.model';
-import { USERDATA } from 'src/app/mock-user-profile';
 import { environment } from 'src/environments/environment';
 import { NutritionService } from '../shared/nutrition.service';
 
@@ -21,43 +21,60 @@ import { NutritionService } from '../shared/nutrition.service';
   styleUrls: ['./food-selection.component.scss'],
 })
 export class FoodSelectionComponent implements OnInit {
-  userData = USERDATA;
-
   searchResult$!: Observable<Food[]>;
-  //userFoodsResult$!: Observable<Food[]>;
 
-  userFoodsIds: number[] = [];
-  userFoods: any[] = [];
+  userFoodsData: any[] = [];
+  userFoodsMetadata: any[] = [];
 
   showSearchResults: boolean = false;
 
   searchInput = new FormControl(null);
 
-  constructor(private service: NutritionService) {}
+  constructor(private service: NutritionService, private router: Router) {}
 
-  add(food: Food) {
-    if (!this.userFoods.find((x) => x.id == food.id)) {
-      this.service
-        .addFood({ id: food.id, qty: 0, measure: 'g' }, 1)
-        .subscribe(() => {
-          this.userFoods.push(food);
-          console.log(this.userFoods);
-        });
+  addFood(food: Food) {
+    if (!this.userFoodsData.find((x) => x.food_id == food.food_id)) {
+      this.userFoodsData.push(food);
     } else {
       alert('Alimento já adicionado');
     }
   }
 
-  delete(foodId: number) {
-    this.service.deleteFood(foodId).subscribe(() => {
-      this.userFoods = this.userFoods.filter((x) => x.id !== foodId);
+  deleteFood(foodId: number) {
+    console.log(foodId);
+    this.userFoodsData = this.userFoodsData.filter((x) => x.food_id !== foodId);
+  }
+
+  saveFoods() {
+    this.userFoodsMetadata = this.userFoodsData.map((food) => {
+      let userFood = this.userFoodsMetadata.find(
+        (x) => x.food_id == food.food_id
+      );
+
+      if (!userFood) {
+        return {
+          food_id: food.food_id,
+          qty: 0,
+          measure: food.default_measure,
+        };
+      }
+
+      return userFood;
     });
+
+    this.service
+      .updateUserFoodsMetadata(this.userFoodsMetadata, 1)
+      .subscribe(() => this.router.navigate(['ajustar-alimentos']));
   }
 
   ngOnInit(): void {
     this.service
+      .getUserFoodsMetadata(1)
+      .subscribe((foods: Food[]) => (this.userFoodsMetadata = foods));
+
+    this.service
       .getFoodsByUserId(1)
-      .subscribe((foods: Food[]) => (this.userFoods = foods));
+      .subscribe((foods: any) => (this.userFoodsData = foods));
 
     this.searchResult$ = this.searchInput.valueChanges.pipe(
       map((value) => value.trim()),

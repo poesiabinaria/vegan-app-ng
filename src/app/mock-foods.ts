@@ -2,7 +2,7 @@ import { Food } from './nutrition/shared/nutrition.model';
 
 export const FOODS: Food[] = [
   {
-    id: 12,
+    food_id: 12,
     name: 'Feijão',
     category: '',
     defaultMeasure: 'g',
@@ -35,7 +35,7 @@ export const FOODS: Food[] = [
   },
 
   {
-    id: 13,
+    food_id: 13,
     name: 'Grão de bico',
     category: '',
     defaultMeasure: 'g',
@@ -68,7 +68,7 @@ export const FOODS: Food[] = [
   },
 
   {
-    id: 14,
+    food_id: 14,
     name: 'Arroz',
     category: '',
     defaultMeasure: 'g',
@@ -101,7 +101,7 @@ export const FOODS: Food[] = [
   },
 
   {
-    id: 15,
+    food_id: 15,
     name: 'Aveia',
     category: '',
     defaultMeasure: 'cs',

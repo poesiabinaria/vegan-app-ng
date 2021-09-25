@@ -1,5 +1,5 @@
 export interface Food {
-  id: number;
+  food_id: number;
   name: string;
   category: string;
   defaultMeasure: string;

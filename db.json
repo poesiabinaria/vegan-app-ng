@@ -34,11 +34,11 @@
       "category": "Leguminosas",
       "defaultMeasure": "g",
       "values": {
-        "calories": 164,
+        "calories": 132,
         "vA": 12,
-        "iron": 2.9,
-        "calcium": 49,
-        "zinc": 1.5,
+        "iron": 2.1,
+        "calcium": 27,
+        "zinc": 1.1,
         "carbohydrates": 12,
         "mono": 12,
         "o3": 12,
@@ -47,13 +47,13 @@
         "proteins": 8.9,
         "fenilalanina": 295,
         "histidina": 244,
-        "isoleucina": 380,
-        "leucina": 631,
-        "lisina": 593,
-        "metionina": 235,
-        "treonina": 329,
-        "triptofano": 85,
-        "valina": 372
+        "isoleucina": 391,
+        "leucina": 708,
+        "lisina": 608,
+        "metionina": 133,
+        "treonina": 373,
+        "triptofano": 105,
+        "valina": 464
       }
     },
     {
@@ -111,33 +111,62 @@
         "triptofano": 234,
         "valina": 937
       }
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "profile": {
-        "name": "Vanessafada",
-        "age": 26,
-        "gender": "F",
-        "weight": 90,
-        "height": 1.5
-      },
-      "values": {}
-    }
-  ],
-  "usersFoods": [
-    {
-      "id": 12,
-      "qty": 0,
-      "measure": "g",
-      "userId": 1
     },
     {
-      "id": 15,
-      "qty": 0,
-      "measure": "g",
-      "userId": 1
+      "id": 16,
+      "name": "Proteína Soja",
+      "category": "Processado",
+      "defaultMeasure": "cs",
+      "values": {
+        "calories": 338,
+        "vA": 12,
+        "iron": 14.5,
+        "calcium": 178,
+        "zinc": 4,
+        "carbohydrates": 12,
+        "mono": 12,
+        "o3": 12,
+        "o6": 12,
+        "trans": 12,
+        "proteins": 80,
+        "fenilalanina": 1468,
+        "histidina": 2303,
+        "isoleucina": 4253,
+        "leucina": 6782,
+        "lisina": 5327,
+        "metionina": 1130,
+        "treonina": 3137,
+        "triptofano": 1116,
+        "valina": 4099
+      }
+    },
+    {
+      "id": 17,
+      "name": "Lentilha",
+      "category": "Leguminosas",
+      "defaultMeasure": "cs",
+      "values": {
+        "calories": 114,
+        "vA": 12,
+        "iron": 3.3,
+        "calcium": 19,
+        "zinc": 4,
+        "carbohydrates": 12,
+        "mono": 12,
+        "o3": 12,
+        "o6": 12,
+        "trans": 12,
+        "proteins": 9,
+        "fenilalanina": 1468,
+        "histidina": 2303,
+        "isoleucina": 4253,
+        "leucina": 6782,
+        "lisina": 5327,
+        "metionina": 1130,
+        "treonina": 3137,
+        "triptofano": 1116,
+        "valina": 4099
+      }
     }
   ]
 }

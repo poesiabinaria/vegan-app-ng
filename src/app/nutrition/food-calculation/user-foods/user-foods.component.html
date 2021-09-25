@@ -1,66 +1,65 @@
-<div class="items-food">
-  <div class="row no-gutters">
-    <div class="col-xl-6" *ngFor="let itemFoodUser of userData.foods">
-      <div
-        class="item-food d-flex align-items-center bg-white p-3"
-        *ngIf="getFoodInfo(itemFoodUser.id) as itemFoodBase"
-      >
-        <div class="left-area flex-grow-1">
-          <div class="d-flex">
-            <div class="img-area">
-              <img src="../../assets/img/place.png" alt="" />
-            </div>
+<small>{{ saveStatus }} </small>
+<div class="row no-gutters">
+  <div class="col-xl-6" *ngFor="let foodMetadata of foodsMetadata">
+    <div
+      class="item-food d-flex align-items-center bg-white p-3"
+      *ngIf="foodsData | getFoodDataById: foodMetadata.food_id as foodData"
+    >
+      <div class="left-area flex-grow-1">
+        <div class="d-flex">
+          <div class="img-area">
+            <img src="../../assets/img/place.png" alt="" />
+          </div>
 
-            <div class="description-area">
-              <h4>{{ itemFoodBase.name }}</h4>
-              <ul class="list-unstyled">
-                <li class="small">Proteínas: 223mg</li>
-                <li class="small">Ferro: 89mg</li>
-              </ul>
-              <div class="material-icon-area">
-                <span class="material-icons md-18">...</span>
-              </div>
+          <div class="description-area">
+            <h4 class="card-title">{{ foodData.name }}</h4>
+            <ul class="list-unstyled">
+              <li class="small">Proteínas: 223mg</li>
+              <li class="small">Ferro: 89mg</li>
+            </ul>
+            <div class="material-icon-area">
+              <span class="material-icons md-18">...</span>
             </div>
           </div>
         </div>
-        <div class="right-area text-right">
-          <div class="d-flex align-items-center">
-            <div class="food-qty mr-2">
-              {{ itemFoodUser.qty * (itemFoodUser.measure == "g" ? 100 : 1) }}
-            </div>
-            <div>
-              <select
-                (change)="updateMeasure(itemFoodBase, itemFoodUser, $event)"
-                class="custom-select custom-select-sm"
-              >
-                <option value="g" selected>gramas</option>
-                <option value="cs">colh. sopa</option>
-                <option value="ch">concha(s)</option>
-              </select>
-            </div>
+      </div>
+      <div class="right-area text-right">
+        <div class="d-flex align-items-center">
+          <div class="food-qty mr-2">
+            {{ foodMetadata.qty * (foodMetadata.measure == "g" ? 100 : 1) }}
           </div>
+          <div>
+            <select
+              (change)="updateMeasure(foodData, foodMetadata, $event)"
+              class="custom-select custom-select-sm"
+            >
+              <option value="g" selected>gramas</option>
+              <option value="cs">colh. sopa</option>
+              <option value="ch">concha(s)</option>
+            </select>
+          </div>
+        </div>
 
-          <div
-            class="btn-group btn-group-lg mt-3"
-            role="group"
-            aria-label="Basic example"
+        <div
+          class="btn-group btn-group-lg mt-3"
+          role="group"
+          aria-label="Basic example"
+        >
+          <button
+            type="button"
+            class="btn qty-button"
+            (click)="updateQty(foodData, foodMetadata, 'remove')"
+            [disabled]="foodMetadata.qty <= 0 ? true : false"
           >
-            <button
-              type="button"
-              class="btn qty-button"
-              (click)="updateQty(itemFoodBase, itemFoodUser, 'remove')"
-              [disabled]="itemFoodUser.qty <= 0 ? true : false"
-            >
-              -
-            </button>
-            <button
-              type="button"
-              class="btn qty-button"
-              (click)="updateQty(itemFoodBase, itemFoodUser, 'add')"
-            >
-              +
-            </button>
-          </div>
+            -
+          </button>
+          <button
+            type="button"
+            class="btn qty-button"
+            (click)="updateQty(foodData, foodMetadata, 'add')"
+          >
+            +
+          </button>
         </div>
       </div>
     </div>

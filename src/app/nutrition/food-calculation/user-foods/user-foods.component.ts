@@ -1,6 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { forkJoin, Subject, timer } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 
 import { FOODS } from '../../../mock-foods';
+import { Food } from '../../shared/nutrition.model';
+import { NutritionService } from '../../shared/nutrition.service';
 
 @Component({
   selector: 'app-user-foods',
@@ -10,11 +21,16 @@ import { FOODS } from '../../../mock-foods';
 export class UserFoodsComponent implements OnInit {
   @Input() userData: any;
 
-  foodsDB = FOODS;
+  foodsMetadata: any[] = [];
+  foodsData: any[] = [];
+  saveStatus: string = '';
 
-  getFoodInfo(id: number): any {
-    return this.foodsDB.find((x) => x.id === id);
-  }
+  saveUserData$: Subject<any> = new Subject();
+
+  // getFoodInfo(id: number): any {
+  //   console.log('id:', id);
+  //   return this.foodsData.find((x) => x.food_id === id);
+  // }
 
   getFoodValuesBasedOnMeasure(foodValues: any, measure: any): any {
     let measureNumber: number, base: number;
@@ -43,27 +59,30 @@ export class UserFoodsComponent implements OnInit {
     return newNutrientValues;
   }
 
-  updateQty(itemFoodBase: any, itemFoodUser: any, action: string) {
+  updateQty(foodData: any, foodMetadata: any, action: string) {
     if (action === 'add') {
-      itemFoodUser.qty++;
-      this.updateAchievedNeed(itemFoodBase.values, itemFoodUser.measure, 1);
+      foodMetadata.qty++;
+      this.updateAchievedNeed(foodData.values, foodMetadata.measure, 1);
     } else {
-      itemFoodUser.qty--;
-      this.updateAchievedNeed(itemFoodBase.values, itemFoodUser.measure, -1);
+      foodMetadata.qty--;
+      this.updateAchievedNeed(foodData.values, foodMetadata.measure, -1);
     }
 
-    console.log('user ', itemFoodUser);
+    console.log('user ', foodMetadata);
+    this.saveUserData$.next(this.foodsMetadata);
   }
 
-  updateMeasure(itemFoodBase: any, itemFoodUser: any, event: any) {
+  updateMeasure(foodData: any, foodMetadata: any, event: any) {
     this.updateAchievedNeed(
-      itemFoodBase.values,
-      itemFoodUser.measure,
-      -itemFoodUser.qty
+      foodData.values,
+      foodMetadata.measure,
+      -foodMetadata.qty
     );
 
-    itemFoodUser.measure = event.target.value;
-    itemFoodUser.qty = 0;
+    foodMetadata.measure = event.target.value;
+    foodMetadata.qty = 0;
+
+    this.saveUserData$.next(this.foodsMetadata);
   }
 
   updateAchievedNeed(foodValues: any, measure: string, multiplier: number) {
@@ -92,12 +111,61 @@ export class UserFoodsComponent implements OnInit {
       updatedValues[nutrientGroupName] = temp;
     });
 
-    console.log(updatedValues);
-
     this.userData.values = updatedValues;
   }
 
-  constructor() {}
+  showSaveTime() {
+    this.saveStatus = 'Salvo!';
+    timer(3000).subscribe(() => (this.saveStatus = 'Salvo há 3 segundos'));
+  }
 
-  ngOnInit(): void {}
+  initNutritionalValues() {
+    this.foodsMetadata.forEach((foodMetadata) => {
+      let foodData = this.foodsData.find(
+        (foodData: any) => foodData.food_id === foodMetadata.food_id
+      );
+
+      this.updateAchievedNeed(
+        foodData.values,
+        foodMetadata.measure,
+        foodMetadata.qty
+      );
+    });
+  }
+
+  constructor(private service: NutritionService) {}
+
+  ngOnInit(): void {
+    // this.service
+    //   .getUserValues(1)
+    //   .subscribe(
+    //     (userDataValues: any) => (this.userData.values = userDataValues.values)
+    //   );
+
+    this.service.getUserFoodsMetadata(1).subscribe((foods: any[]) => {
+      this.foodsMetadata = foods;
+      console.log('foodsMetadata: ', this.foodsMetadata);
+    });
+
+    this.service.getFoodsByUserId(1).subscribe((foods: any) => {
+      this.foodsData = foods;
+      this.initNutritionalValues();
+      console.log('foodsData: ', this.foodsData);
+    });
+
+    this.saveUserData$
+      .pipe(
+        debounceTime(3000),
+        switchMap((value) => this.service.updateUserFoodsMetadata(value, 1))
+      )
+      .subscribe(
+        (val) => {
+          console.log('SALVO', val);
+          this.showSaveTime();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 }
