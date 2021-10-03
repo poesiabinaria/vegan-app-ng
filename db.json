@@ -4,7 +4,7 @@
       "id": 12,
       "name": "Feijão branco",
       "category": "Leguminosas",
-      "defaultMeasure": "g",
+      "default_measure": "g",
       "values": {
         "calories": 123,
         "vA": 0,
@@ -32,7 +32,7 @@
       "id": 13,
       "name": "Feijão preto",
       "category": "Leguminosas",
-      "defaultMeasure": "g",
+      "default_measure": "g",
       "values": {
         "calories": 132,
         "vA": 12,
@@ -60,7 +60,7 @@
       "id": 14,
       "name": "Arroz",
       "category": "Cereais",
-      "defaultMeasure": "g",
+      "default_measure": "g",
       "values": {
         "calories": 130,
         "vA": 12,
@@ -88,7 +88,7 @@
       "id": 15,
       "name": "Aveia",
       "category": "Cereais",
-      "defaultMeasure": "cs",
+      "default_measure": "cs",
       "values": {
         "calories": 389,
         "vA": 12,
@@ -116,7 +116,7 @@
       "id": 16,
       "name": "Proteína Soja",
       "category": "Processado",
-      "defaultMeasure": "cs",
+      "default_measure": "cs",
       "values": {
         "calories": 338,
         "vA": 12,
@@ -144,7 +144,7 @@
       "id": 17,
       "name": "Lentilha",
       "category": "Leguminosas",
-      "defaultMeasure": "cs",
+      "default_measure": "cs",
       "values": {
         "calories": 114,
         "vA": 12,

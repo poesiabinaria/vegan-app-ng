@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AccountService } from '../account/shared/account.service';
 
 @Component({
   selector: 'app-header',
@@ -6,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isMenuCollapsed = true;
+  constructor(private accountService: AccountService) {}
 
-  constructor() {}
+  isMenuCollapsed: boolean = true;
+  isUserLogedIn$!: Observable<boolean>;
+  currentUser$!: Observable<any>;
 
-  ngOnInit(): void {}
+  onLogout() {
+    this.accountService.logout();
+  }
+
+  ngOnInit(): void {
+    //this.isUserLogedIn$ = this.accountService.isUserLoggedIn;
+    this.currentUser$ = this.accountService.currentUser;
+  }
 }

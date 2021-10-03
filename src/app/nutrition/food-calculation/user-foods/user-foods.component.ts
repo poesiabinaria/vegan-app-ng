@@ -10,7 +10,7 @@ import {
 } from 'rxjs/operators';
 
 import { FOODS } from '../../../mock-foods';
-import { Food } from '../../shared/nutrition.model';
+import { FoodData, FoodMetadata } from '../../shared/nutrition.model';
 import { NutritionService } from '../../shared/nutrition.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class UserFoodsComponent implements OnInit {
 
   // getFoodInfo(id: number): any {
   //   console.log('id:', id);
-  //   return this.foodsData.find((x) => x.food_id === id);
+  //   return this.foodsData.find((x) => x.id === id);
   // }
 
   getFoodValuesBasedOnMeasure(foodValues: any, measure: any): any {
@@ -115,14 +115,14 @@ export class UserFoodsComponent implements OnInit {
   }
 
   showSaveTime() {
-    this.saveStatus = 'Salvo!';
-    timer(3000).subscribe(() => (this.saveStatus = 'Salvo há 3 segundos'));
+    this.saveStatus = 'Salvo há alguns segundos';
+    timer(60000).subscribe(() => (this.saveStatus = ''));
   }
 
   initNutritionalValues() {
     this.foodsMetadata.forEach((foodMetadata) => {
       let foodData = this.foodsData.find(
-        (foodData: any) => foodData.food_id === foodMetadata.food_id
+        (foodData: FoodData) => foodData.id === foodMetadata.id
       );
 
       this.updateAchievedNeed(
@@ -142,12 +142,12 @@ export class UserFoodsComponent implements OnInit {
     //     (userDataValues: any) => (this.userData.values = userDataValues.values)
     //   );
 
-    this.service.getUserFoodsMetadata(1).subscribe((foods: any[]) => {
+    this.service.getUserFoodsMetadata().subscribe((foods: FoodMetadata[]) => {
       this.foodsMetadata = foods;
       console.log('foodsMetadata: ', this.foodsMetadata);
     });
 
-    this.service.getFoodsByUserId(1).subscribe((foods: any) => {
+    this.service.geUserFoods().subscribe((foods: FoodData[]) => {
       this.foodsData = foods;
       this.initNutritionalValues();
       console.log('foodsData: ', this.foodsData);
@@ -156,7 +156,7 @@ export class UserFoodsComponent implements OnInit {
     this.saveUserData$
       .pipe(
         debounceTime(3000),
-        switchMap((value) => this.service.updateUserFoodsMetadata(value, 1))
+        switchMap((value) => this.service.updateUserFoodsMetadata(value))
       )
       .subscribe(
         (val) => {

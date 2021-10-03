@@ -2,15 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FoodSelectionComponent } from './food-selection.component';
 
-describe('FoodSelectionComponent', () => {
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
+fdescribe('FoodSelectionComponent', () => {
   let component: FoodSelectionComponent;
   let fixture: ComponentFixture<FoodSelectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoodSelectionComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule, RouterTestingModule],
+      declarations: [FoodSelectionComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +24,10 @@ describe('FoodSelectionComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should remove a food', () => {
+    component.i = 10;
+    expect(component.i).toBe(10);
   });
 });

@@ -29,7 +29,7 @@
             >
               <div class="d-flex w-100 justify-content-between">
                 <h3 class="card-title mb-1">{{ food.name }}</h3>
-                <small>{{ food.food_id }}</small>
+                <small>{{ food.id }}</small>
               </div>
               <small class="mb-1">{{ food.category }}</small>
               <div>
@@ -67,7 +67,7 @@
               </div>
               <div class="right-area text-right small">
                 <button
-                  (click)="deleteFood(userFood.food_id)"
+                  (click)="deleteFood(userFood.id)"
                   type="button"
                   class="btn btn-danger btn-sm"
                 >

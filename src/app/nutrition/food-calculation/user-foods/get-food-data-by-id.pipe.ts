@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class GetFoodDataByIdPipe implements PipeTransform {
   transform(foodsData: any[], foodId: number): any {
-    return foodsData.find((x: any) => x.food_id === foodId);
+    return foodsData.find((x: any) => x.id === foodId);
   }
 }

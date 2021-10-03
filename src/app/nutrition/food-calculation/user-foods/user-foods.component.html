@@ -3,7 +3,7 @@
   <div class="col-xl-6" *ngFor="let foodMetadata of foodsMetadata">
     <div
       class="item-food d-flex align-items-center bg-white p-3"
-      *ngIf="foodsData | getFoodDataById: foodMetadata.food_id as foodData"
+      *ngIf="foodsData | getFoodDataById: foodMetadata.id as foodData"
     >
       <div class="left-area flex-grow-1">
         <div class="d-flex">
@@ -32,8 +32,9 @@
             <select
               (change)="updateMeasure(foodData, foodMetadata, $event)"
               class="custom-select custom-select-sm"
+              [value]="foodMetadata.measure"
             >
-              <option value="g" selected>gramas</option>
+              <option value="g">gramas</option>
               <option value="cs">colh. sopa</option>
               <option value="ch">concha(s)</option>
             </select>

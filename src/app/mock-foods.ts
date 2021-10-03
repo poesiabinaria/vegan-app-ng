@@ -1,8 +1,8 @@
-import { Food } from './nutrition/shared/nutrition.model';
+import { FoodData } from './nutrition/shared/nutrition.model';
 
-export const FOODS: Food[] = [
+export const FOODS: FoodData[] = [
   {
-    food_id: 12,
+    id: 12,
     name: 'Feijão',
     category: '',
     defaultMeasure: 'g',
@@ -35,7 +35,7 @@ export const FOODS: Food[] = [
   },
 
   {
-    food_id: 13,
+    id: 13,
     name: 'Grão de bico',
     category: '',
     defaultMeasure: 'g',
@@ -68,7 +68,7 @@ export const FOODS: Food[] = [
   },
 
   {
-    food_id: 14,
+    id: 14,
     name: 'Arroz',
     category: '',
     defaultMeasure: 'g',
@@ -101,7 +101,7 @@ export const FOODS: Food[] = [
   },
 
   {
-    food_id: 15,
+    id: 15,
     name: 'Aveia',
     category: '',
     defaultMeasure: 'cs',

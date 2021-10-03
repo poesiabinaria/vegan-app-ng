@@ -1,6 +1,12 @@
 <div class="container">
-  <div class="greetings mb-5">
-    <h1>Olá! :)</h1>
+  <div class="user-greeting-area mb-5">
+    <h1 class="greeting">Olá,</h1>
+    <div *ngIf="currentUser$ | async as currentUser; else logoutTemplate">
+      <h1 class="second-line">{{ currentUser.name }} :)</h1>
+    </div>
+    <ng-template #logoutTemplate>
+      <p class="second-line">{{ "Entre ou cadastre-se!" | lowercase }}</p>
+    </ng-template>
   </div>
   <div class="row TEMP">
     <div class="col-xl-4">
@@ -20,6 +26,15 @@
             volutpat ornare dictum.
           </p>
         </div>
+        <footer class="mt-4">
+          <button
+            type="button"
+            class="btn btn-primary btn-block"
+            [routerLink]="''"
+          >
+            Conhecer!
+          </button>
+        </footer>
       </div>
     </div>
 
@@ -40,6 +55,15 @@
             volutpat ornare dictum.
           </p>
         </div>
+        <footer class="mt-4">
+          <button
+            type="button"
+            class="btn btn-primary btn-block"
+            [routerLink]="'nutricao/editar-alimentos'"
+          >
+            Calcular
+          </button>
+        </footer>
       </div>
     </div>
 
@@ -60,6 +84,15 @@
             volutpat ornare dictum.
           </p>
         </div>
+        <footer class="mt-4">
+          <button
+            type="button"
+            class="btn btn-primary btn-block"
+            [routerLink]="''"
+          >
+            Saber mais
+          </button>
+        </footer>
       </div>
     </div>
   </div>

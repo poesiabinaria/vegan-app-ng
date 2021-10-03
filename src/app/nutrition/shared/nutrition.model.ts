@@ -1,5 +1,11 @@
-export interface Food {
-  food_id: number;
+export interface FoodMetadata {
+  id: number;
+  qtd: number;
+  measure: string;
+}
+
+export interface FoodData {
+  id: number;
   name: string;
   category: string;
   defaultMeasure: string;

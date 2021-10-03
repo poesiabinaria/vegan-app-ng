@@ -2,8 +2,37 @@
 //   background-color: #223443;
 // }
 
-.greetings {
+.user-greeting-area {
   margin-top: 150px;
+  height: 100px;
+
+  .greeting {
+    animation: 0.5s 0.8s forwards greeting-animation;
+
+    @keyframes greeting-animation {
+      50% {
+        transform: translateY(20px);
+      }
+      80% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0px);
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .second-line {
+    animation: 0.4s 1.1s forwards second-line-animation;
+    opacity: 0;
+
+    @keyframes second-line-animation {
+      100% {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .item-block {
@@ -19,6 +48,7 @@
   background-color: white;
 
   .header-area {
+    //border: 5px solid violet;
     h3 .first-line {
       text-transform: lowercase;
       font-size: 1rem;
@@ -31,4 +61,8 @@
       //font-weight: 500;
     }
   }
+}
+
+.azul {
+  color: blue;
 }

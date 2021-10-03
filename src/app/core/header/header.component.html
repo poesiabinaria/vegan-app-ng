@@ -2,7 +2,6 @@
   <div class="container">
     <a class="navbar-brand" [routerLink]="'.'">VeganApp</a>
 
-    <!-- Step 3: Toggle the value of the property when the toggler button is clicked. -->
     <button
       class="navbar-toggler"
       type="button"
@@ -11,20 +10,14 @@
       &#9776;
     </button>
 
-    <!-- Step 2: Add the ngbCollapse directive to the element below. -->
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <!-- Step 4: Close the menu when a link is clicked. -->
-          <a
-            class="nav-link"
-            [routerLink]="'home'"
-            (click)="isMenuCollapsed = true"
+          <a class="nav-link" [routerLink]="''" (click)="isMenuCollapsed = true"
             >Início</a
           >
         </li>
         <li class="nav-item">
-          <!-- Step 4: Close the menu when a link is clicked. -->
           <a
             class="nav-link"
             [routerLink]="'.'"
@@ -35,7 +28,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [routerLink]="'selecionar-alimentos'"
+            [routerLink]="'nutricao/editar-alimentos'"
             (click)="isMenuCollapsed = true"
             >Cálculo Nutriciona</a
           >
@@ -49,6 +42,39 @@
           >
         </li>
       </ul>
+
+      <form class="form-inline">
+        <div *ngIf="currentUser$ | async as currentUser; else logoutTemplate">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-primary" id="dropdownUser" ngbDropdownToggle>
+              {{ currentUser.name }}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownUser">
+              <button ngbDropdownItem [routerLink]="'perfil'">
+                Meu perfil
+              </button>
+              <button ngbDropdownItem (click)="onLogout()">Sair</button>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #logoutTemplate>
+          <button
+            type="button"
+            class="btn btn-primary mr-1"
+            [routerLink]="'login'"
+          >
+            Entrar
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            [routerLink]="'registrar'"
+          >
+            Cadastrar-se
+          </button>
+        </ng-template>
+      </form>
     </div>
   </div>
 </nav>

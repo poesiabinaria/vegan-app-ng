@@ -19,9 +19,11 @@ import { FoodSelectionComponent } from './nutrition/food-selection/food-selectio
 import { FoodCalculationComponent } from './nutrition/food-calculation/food-calculation.component';
 import { UserProfileModule } from './core/user-profile/user-profile.module';
 import { GetFoodDataByIdPipe } from './nutrition/food-calculation/user-foods/get-food-data-by-id.pipe';
-import { SignUpComponent } from './core/sign-up/sign-up.component';
 import { HomeComponent } from './core/home/home.component';
 import { NutritionSectionHeaderComponent } from './nutrition/shared/nutrition-section-header/nutrition-section-header.component';
+import { LoginComponent } from './core/account/login/login.component';
+import { RegisterComponent } from './core/account/register/register.component';
+import { httpInterceptorsProviders } from './core/http-interceptors';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { NutritionSectionHeaderComponent } from './nutrition/shared/nutrition-se
     FoodSelectionComponent,
     FoodCalculationComponent,
     GetFoodDataByIdPipe,
-    SignUpComponent,
     HomeComponent,
     NutritionSectionHeaderComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { NutritionSectionHeaderComponent } from './nutrition/shared/nutrition-se
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [httpInterceptorsProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
